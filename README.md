@@ -24,8 +24,8 @@ GROUP BY staff_id
 HAVING COUNT(customer.store_id) > 300;
 ```
 
-`1. **12-04hw-1** 
-<img src = "img/12-04hw-1-1.png" width = 60%>`
+1. **12-04hw-1** 
+<img src = "img/12-04hw-1-1.png" width = 60%>
 
 
 ---
