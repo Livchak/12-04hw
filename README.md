@@ -54,16 +54,16 @@ WHERE film_list.length > (SELECT AVG(length) FROM film_list);
 
 `Получите информацию, за какой месяц была получена наибольшая сумма платежей, и добавьте информацию по количеству аренд за этот месяц.`
 
-1. `Выделяем оператором MONTH из datatime месяц`
+1. `Оператором date_format из колонки payment_date таблицы payment выделяем данные в формате %Y-%M`
 2. `Суммируем оплаты `
 3. `Добавляем счётчик строк аренды`
-4. `Группируем по месячной оплате`
+4. `Группируем по формату %Y-%M`
 5. `Ограничиваем вывод сортировки по сумме до 1 в порядке по убыванию суммы платежей`
 
 ```
-SELECT MONTH(payment_date), SUM(amount), COUNT(payment_id)
+SELECT DATE_FORMAT(payment_date, '%Y-%M'), SUM(amount), COUNT(payment_id)
 FROM payment
-GROUP BY MONTH(payment_date)
+GROUP BY DATE_FORMAT(payment_date, '%Y-%M')
 ORDER BY SUM(amount) DESC
 LIMIT 1;
 
